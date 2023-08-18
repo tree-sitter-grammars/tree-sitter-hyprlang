@@ -1,0 +1,35 @@
+{
+  "name": "tree-sitter-hypr",
+  "version": "0.1.1",
+  "description": "hypr grammar for hyprland configuration files",
+  "author": "LIOKA Ranarison Fiderana",
+  "repository": "https://github.com/luckasRanarison/tree-sitter-hypr",
+  "license": "MIT",
+  "keywords": [
+    "parsing",
+    "incremental",
+    "hyprland"
+  ],
+  "main": "bindings/node",
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "scripts": {
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "file-types": [
+        "conf"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "scope": "source.conf"
+    }
+  ]
+}
