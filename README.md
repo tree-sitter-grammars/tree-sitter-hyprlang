@@ -8,7 +8,7 @@ To use it in Neovim, you have install the parser manually by adding the followin
 
 ```lua
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.icelang = {
+parser_config.hypr = {
   install_info = {
     url = "https://github.com/luckasRanarison/tree-sitter-hypr",
     files = { "src/parser.c" },
