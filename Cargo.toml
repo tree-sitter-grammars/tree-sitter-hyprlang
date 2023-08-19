@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-hypr"
 description = "hypr grammar for the tree-sitter parsing library"
-version = "0.0.1"
+version = "1.0.0"
 keywords = ["incremental", "parsing", "hypr"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/tree-sitter/tree-sitter-hypr"
@@ -9,12 +9,7 @@ edition = "2018"
 license = "MIT"
 
 build = "bindings/rust/build.rs"
-include = [
-  "bindings/rust/*",
-  "grammar.js",
-  "queries/*",
-  "src/*",
-]
+include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*"]
 
 [lib]
 path = "bindings/rust/lib.rs"
