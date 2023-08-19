@@ -1,0 +1,99 @@
+=================================================
+Basics
+=================================================
+
+# comment
+
+$variable = value
+
+section {
+  command =
+}
+
+section:device {
+  command =
+}
+
+---
+
+(configuration
+  (comment)
+  (assignment
+    (variable)
+    value: (string))
+  (section
+    (name)
+    (command
+      (name)))
+  (section
+    (name)
+    device: (name)
+    (command
+      (name))))
+
+=================================================
+Data types
+=================================================
+
+boolean = true
+number = 1.2
+vec2 = 1 2
+string = hyprland
+color_hex = 0xffffff
+color_rgb = rgb(000fff)
+gradient = rgb(000fff) 0xfff000 45deg
+mod = SUPER
+variable = $variable
+keyword = str, 1, 4, true
+
+---
+
+(configuration
+  (command
+    (name)
+    value: (boolean))
+  (command
+    (name)
+    value: (number))
+  (command
+    (name)
+    value: (vec2
+      (number)
+      (number)))
+  (command
+    (name)
+    value: (string))
+  (command
+    (name)
+    value: (color
+      (legacy_hex
+        (hex))))
+  (command
+    (name)
+    value: (color
+      (rgb
+        (hex))))
+  (command
+    (name)
+    value: (gradient
+      (color
+        (rgb
+          (hex)))
+      (color
+        (legacy_hex
+          (hex)))
+      (angle)))
+  (command
+    (name)
+    value: (mod))
+  (command
+    (name)
+    value: (variable))
+  (command
+    (name)
+    value: (params
+      (string)
+      (number)
+      (number)
+      (boolean))))
+
