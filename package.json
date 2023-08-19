@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-hypr",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "hypr grammar for hyprland configuration files",
   "author": "LIOKA Ranarison Fiderana",
   "repository": "https://github.com/luckasRanarison/tree-sitter-hypr",
