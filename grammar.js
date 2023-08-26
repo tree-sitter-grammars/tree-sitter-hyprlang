@@ -11,28 +11,26 @@ module.exports = grammar({
         choice(
           $.source,
           $.exec,
+          $.declaration,
           $.assignment,
-          $.command,
+          $.keyword,
           $.section,
           $._linebreak
         )
       ),
 
-    assignment: ($) => seq($.variable, "=", field("value", $._value)),
+    declaration: ($) => seq($.variable, "=", $._value, $._linebreak),
 
-    command: ($) =>
-      seq(
-        choice($.name),
-        "=",
-        choice(seq(field("value", $._value), $._linebreak), $._linebreak)
-      ),
+    assignment: ($) => seq($.name, "=", optional($._value), $._linebreak),
+
+    keyword: ($) => seq($.name, "=", $.params, $._linebreak),
 
     section: ($) =>
       seq(
         choice($.name, seq($.name, ":", field("device", $.name))),
         "{",
         $._linebreak,
-        repeat(choice($.command, $.section)),
+        repeat(choice($.assignment, $.keyword, $.section)),
         "}",
         $._linebreak
       ),
@@ -51,8 +49,7 @@ module.exports = grammar({
         $.mod,
         $.keys,
         $.string,
-        $.variable,
-        $.params
+        $.variable
       ),
 
     boolean: () => choice("true", "false", "on", "off", "yes", "no"),
@@ -94,7 +91,7 @@ module.exports = grammar({
 
     string: () => token(prec(-1, /[^\n,]+/)),
 
-    params: ($) => prec.right(-1, seq($._value, repeat(seq(",", $._value)))),
+    params: ($) => prec(-1, seq($._value, repeat(seq(",", $._value)))),
 
     name: () => /[a-zA-Z][a-zA-Z0-9_\.\-]*/,
 

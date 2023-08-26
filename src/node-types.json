@@ -7,60 +7,49 @@
   {
     "type": "assignment",
     "named": true,
-    "fields": {
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "color",
-            "named": true
-          },
-          {
-            "type": "gradient",
-            "named": true
-          },
-          {
-            "type": "keys",
-            "named": true
-          },
-          {
-            "type": "mod",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "params",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          },
-          {
-            "type": "vec2",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "color",
+          "named": true
+        },
+        {
+          "type": "gradient",
+          "named": true
+        },
+        {
+          "type": "keys",
+          "named": true
+        },
+        {
+          "type": "mod",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "variable",
+          "named": true
+        },
+        {
+          "type": "vec2",
           "named": true
         }
       ]
@@ -91,68 +80,6 @@
     }
   },
   {
-    "type": "command",
-    "named": true,
-    "fields": {
-      "value": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "color",
-            "named": true
-          },
-          {
-            "type": "gradient",
-            "named": true
-          },
-          {
-            "type": "keys",
-            "named": true
-          },
-          {
-            "type": "mod",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "params",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          },
-          {
-            "type": "vec2",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -170,11 +97,15 @@
           "named": true
         },
         {
-          "type": "command",
+          "type": "declaration",
           "named": true
         },
         {
           "type": "exec",
+          "named": true
+        },
+        {
+          "type": "keyword",
           "named": true
         },
         {
@@ -183,6 +114,53 @@
         },
         {
           "type": "source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "color",
+          "named": true
+        },
+        {
+          "type": "gradient",
+          "named": true
+        },
+        {
+          "type": "keys",
+          "named": true
+        },
+        {
+          "type": "mod",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        },
+        {
+          "type": "vec2",
           "named": true
         }
       ]
@@ -236,6 +214,25 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "keyword",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "params",
           "named": true
         }
       ]
@@ -299,10 +296,6 @@
           "named": true
         },
         {
-          "type": "params",
-          "named": true
-        },
-        {
           "type": "string",
           "named": true
         },
@@ -352,7 +345,11 @@
       "required": true,
       "types": [
         {
-          "type": "command",
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "keyword",
           "named": true
         },
         {

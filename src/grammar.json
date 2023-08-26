@@ -16,11 +16,15 @@
           },
           {
             "type": "SYMBOL",
+            "name": "declaration"
+          },
+          {
+            "type": "SYMBOL",
             "name": "assignment"
           },
           {
             "type": "SYMBOL",
-            "name": "command"
+            "name": "keyword"
           },
           {
             "type": "SYMBOL",
@@ -33,7 +37,7 @@
         ]
       }
     },
-    "assignment": {
+    "declaration": {
       "type": "SEQ",
       "members": [
         {
@@ -45,26 +49,21 @@
           "value": "="
         },
         {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_value"
-          }
+          "type": "SYMBOL",
+          "name": "_value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_linebreak"
         }
       ]
     },
-    "command": {
+    "assignment": {
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "name"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "name"
         },
         {
           "type": "STRING",
@@ -74,27 +73,38 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "value",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_value"
-                  }
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_linebreak"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_value"
             },
             {
-              "type": "SYMBOL",
-              "name": "_linebreak"
+              "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_linebreak"
+        }
+      ]
+    },
+    "keyword": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "params"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_linebreak"
         }
       ]
     },
@@ -146,7 +156,11 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "command"
+                "name": "assignment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "keyword"
               },
               {
                 "type": "SYMBOL",
@@ -246,10 +260,6 @@
         {
           "type": "SYMBOL",
           "name": "variable"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "params"
         }
       ]
     },
@@ -526,7 +536,7 @@
       }
     },
     "params": {
-      "type": "PREC_RIGHT",
+      "type": "PREC",
       "value": -1,
       "content": {
         "type": "SEQ",

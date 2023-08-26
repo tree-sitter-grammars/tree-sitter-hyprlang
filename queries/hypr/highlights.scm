@@ -5,7 +5,11 @@
 (exec "exec" @keyword)
 (exec "exec-once" @keyword)
 
-(command 
+(keyword
+  (name) @keyword
+)
+
+(assignment
   (name) @property
 )
 

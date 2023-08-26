@@ -7,28 +7,28 @@ Basics
 $variable = value
 
 section {
-  command =
+  key =
 }
 
 section:device {
-  command =
+  key =
 }
 
 ---
 
 (configuration
   (comment)
-  (assignment
+  (declaration
     (variable)
-    value: (string))
+    (string))
   (section
     (name)
-    (command
+    (assignment
       (name)))
   (section
     (name)
     device: (name)
-    (command
+    (assignment
       (name))))
 
 =================================================
@@ -49,33 +49,33 @@ keyword = str, 1, 4, true
 ---
 
 (configuration
-  (command
+  (assignment
     (name)
-    value: (boolean))
-  (command
+    (boolean))
+  (assignment
     (name)
-    value: (number))
-  (command
+    (number))
+  (assignment
     (name)
-    value: (vec2
+    (vec2
       (number)
       (number)))
-  (command
+  (assignment
     (name)
-    value: (string))
-  (command
+    (string))
+  (assignment
     (name)
-    value: (color
+    (color
       (legacy_hex
         (hex))))
-  (command
+  (assignment
     (name)
-    value: (color
+    (color
       (rgb
         (hex))))
-  (command
+  (assignment
     (name)
-    value: (gradient
+    (gradient
       (color
         (rgb
           (hex)))
@@ -83,15 +83,15 @@ keyword = str, 1, 4, true
         (legacy_hex
           (hex)))
       (angle)))
-  (command
+  (assignment
     (name)
-    value: (mod))
-  (command
+    (mod))
+  (assignment
     (name)
-    value: (variable))
-  (command
+    (variable))
+  (keyword
     (name)
-    value: (params
+    (params
       (string)
       (number)
       (number)
