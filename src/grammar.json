@@ -165,6 +165,10 @@
               {
                 "type": "SYMBOL",
                 "name": "section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_linebreak"
               }
             ]
           }
@@ -193,6 +197,10 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_linebreak"
         }
       ]
     },
@@ -219,6 +227,10 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_linebreak"
         }
       ]
     },

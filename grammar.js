@@ -30,14 +30,14 @@ module.exports = grammar({
         choice($.name, seq($.name, ":", field("device", $.name))),
         "{",
         $._linebreak,
-        repeat(choice($.assignment, $.keyword, $.section)),
+        repeat(choice($.assignment, $.keyword, $.section, $._linebreak)),
         "}",
         $._linebreak
       ),
 
-    source: ($) => seq("source", "=", $.string),
+    source: ($) => seq("source", "=", $.string, $._linebreak),
 
-    exec: ($) => seq(choice("exec", "exec-once"), "=", $.string),
+    exec: ($) => seq(choice("exec", "exec-once"), "=", $.string, $._linebreak),
 
     _value: ($) =>
       choice(
