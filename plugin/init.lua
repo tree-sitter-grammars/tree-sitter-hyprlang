@@ -1,3 +1,3 @@
 vim.filetype.add({
-	pattern = { ["~/.config/hypr/.*"] = "hypr" },
+	pattern = { ["~/.config/hypr/.*%.conf"] = "hypr" },
 })
