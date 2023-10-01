@@ -1,5 +1,6 @@
 {
   "name": "hypr",
+  "word": "string",
   "rules": {
     "configuration": {
       "type": "REPEAT",

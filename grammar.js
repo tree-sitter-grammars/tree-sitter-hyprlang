@@ -5,6 +5,8 @@ module.exports = grammar({
 
   conflicts: ($) => [[$._value, $.gradient]],
 
+  word: ($) => $.string,
+
   rules: {
     configuration: ($) =>
       repeat(
