@@ -31,3 +31,55 @@ Packer:
 ```lua
 use { "luckasRanarison/tree-sitter-hypr" }
 ```
+
+Nix:
+
+with a basic `flake.nix` and all treesitter grammars
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tree-sitter-hypr = {
+      url = "github:luckasRanarison/tree-sitter-hypr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    tree-sitter-hypr,
+    ...
+  }: {
+    homeConfigurations."user@hostname" = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          {
+            programs.neovim = {
+              enable = true;
+              plugins = with pkgs.vimPlugins; [
+                tree-sitter-hypr.packages.${pkgs.system}.default
+                {
+                  plugin = nvim-treesitter.withAllGrammars;
+                  type = "lua";
+                  config = ''
+                    require('nvim-treesitter.configs').setup({
+                      highlight = { enable = true }
+                    })
+                  '';
+                }
+              ];
+            };
+          }
+          # ...
+        ];
+      };
+  };
+}
+```
