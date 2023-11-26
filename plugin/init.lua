@@ -1,5 +1,5 @@
 vim.filetype.add({
-  pattern = { ["~/.config/hypr/.*%.conf"] = "hypr" },
+  pattern = { [".*/hypr/.*%.conf"] = "hypr" },
 })
 
 vim.api.nvim_create_autocmd("FileType", {
