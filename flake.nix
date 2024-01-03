@@ -15,7 +15,7 @@
     };
 
     src = ./.;
-    version = "v1.0.2";
+    version = "v1.1.0";
 
     hypr-grammar = pkgs.tree-sitter.buildGrammar {
       language = "hypr";
