@@ -15,7 +15,7 @@
     };
 
     src = ./.;
-    version = "v1.0.2";
+    version = "v1.1.0";
 
     hypr-grammar = pkgs.tree-sitter.buildGrammar {
       language = "hypr";
@@ -33,10 +33,19 @@
         # we can simply add this line in the plugin to load it
         preInstall = let
           tsInstall = ''
+            vim.filetype.add({
+              pattern = { [\".*/hypr/.*%.conf\"] = \"hypr\" },
+            })
+
+            vim.api.nvim_create_autocmd(\"FileType\", {
+              pattern = \"hypr\",
+              callback = function(event) vim.bo[event.buf].commentstring = \"# %s\" end,
+            })
+
             vim.treesitter.language.require_language(\"hypr\", \"${hypr-grammar}/parser\")
           '';
         in ''
-          echo "${tsInstall}" >> ./plugin/init.lua
+          echo "${tsInstall}" > ./plugin/init.lua
         '';
       };
     };

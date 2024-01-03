@@ -4,37 +4,30 @@ hyprland configuration files grammar for [tree-sitter](https://github.com/tree-s
 
 ## Neovim
 
-To use it in Neovim, you have install the parser manually by adding the following code in your [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/) configuration, and run `:TSInstall hypr`.
+To actually use it in Neovim and get syntax highlighting, folds, smart indent, and automatic file detection, you can use the repository as a plugin by installing it with your package manager. Then, install the grammar with `:TSInstall hypr`.
+
+### Lazy
 
 ```lua
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.hypr = {
-  install_info = {
-    url = "https://github.com/luckasRanarison/tree-sitter-hypr",
-    files = { "src/parser.c" },
-    branch = "master",
-  },
-  filetype = "hypr",
+return {
+  "luckasRanarison/tree-sitter-hypr",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 ```
 
-To get syntax highlightings, folds, indents and automatic file detection, you can use the repository as plugin by installing it with your package manager.
-
-Lazy:
+### Packer
 
 ```lua
-return { "luckasRanarison/tree-sitter-hypr" }
+use {
+  "luckasRanarison/tree-sitter-hypr",
+  requires = { "nvim-treesitter/nvim-treesitter" },
+}
 ```
 
-Packer:
+### Nix as flake
 
-```lua
-use { "luckasRanarison/tree-sitter-hypr" }
-```
+Add the flake and use it as `vimPlugin` within e.g. your home manager configuration for neovim.
 
-Nix:
-
-with a basic `flake.nix` and all treesitter grammars
 ```nix
 {
   inputs = {
@@ -82,4 +75,14 @@ with a basic `flake.nix` and all treesitter grammars
       };
   };
 }
+```
+
+### Filetype detection
+
+hyprs configuration does not have a specific filetype extension. Thus, we detect `.conf` with a path pattern. If your configuration does not get initialized as filetype `hypr` you can set it locally with `:set filetype=hypr` or add another pattern for type detection to your config. The following snippet resolves files with name `hyprland.conf` and sets `hypr` as filetype.
+
+```lua
+vim.filetype.add({
+  pattern = { [".*/hyprland%.conf"] = "hypr" },
+})
 ```
