@@ -4,18 +4,24 @@ hyprland configuration files grammar for [tree-sitter](https://github.com/tree-s
 
 ## Neovim
 
-At first add the plugin to your configuration. After the plugin got added, we can install the grammar with `:TSInstall hypr`.
+To actually use it in Neovim and get syntax highlighting, folds, smart indent, and automatic file detection, you can use the repository as a plugin by installing it with your package manager. Then, install the grammar with `:TSInstall hypr`.
 
 ### Lazy
 
 ```lua
-{ "luckasRanarison/tree-sitter-hypr" },
+return {
+  "luckasRanarison/tree-sitter-hypr",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+}
 ```
 
 ### Packer
 
 ```lua
-use { "luckasRanarison/tree-sitter-hypr" }
+use {
+  "luckasRanarison/tree-sitter-hypr",
+  requires = { "nvim-treesitter/nvim-treesitter" },
+}
 ```
 
 ### Nix as flake
