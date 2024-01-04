@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "tree_sitter_hypr_binding",
+      "target_name": "tree_sitter_hyprlang_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "src"

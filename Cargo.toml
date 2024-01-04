@@ -1,10 +1,10 @@
 [package]
-name = "tree-sitter-hypr"
-description = "hypr grammar for the tree-sitter parsing library"
-version = "1.0.0"
+name = "tree-sitter-hyprlang"
+description = "hyprlang grammar for the tree-sitter parsing library"
+version = "2.0.0"
 keywords = ["incremental", "parsing", "hypr"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-hypr"
+repository = "https://github.com/tree-sitter/tree-sitter-hyprlang"
 edition = "2018"
 license = "MIT"
 

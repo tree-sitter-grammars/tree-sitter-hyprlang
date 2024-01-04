@@ -1,16 +1,16 @@
-# tree-sitter-hypr
+# tree-sitter-hyprlang
 
-hyprland configuration files grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
+[hyprlang](https://github.com/hyprwm/hyprlang) grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
 ## Neovim
 
-To actually use it in Neovim and get syntax highlighting, folds, smart indent, and automatic file detection, you can use the repository as a plugin by installing it with your package manager. Then, install the grammar with `:TSInstall hypr`.
+To actually use it in Neovim and get syntax highlighting, folds, smart indent, and automatic file detection, you can use the repository as a plugin by installing it with your package manager. Then, install the grammar with `:TSInstall hyprlang`.
 
 ### Lazy
 
 ```lua
 return {
-  "luckasRanarison/tree-sitter-hypr",
+  "luckasRanarison/tree-sitter-hyprlang",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 ```
@@ -19,7 +19,7 @@ return {
 
 ```lua
 use {
-  "luckasRanarison/tree-sitter-hypr",
+  "luckasRanarison/tree-sitter-hyprlang",
   requires = { "nvim-treesitter/nvim-treesitter" },
 }
 ```
@@ -36,15 +36,15 @@ Add the flake and use it as `vimPlugin` within e.g. your home manager configurat
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tree-sitter-hypr = {
-      url = "github:luckasRanarison/tree-sitter-hypr";
+    tree-sitter-hyprlang = {
+      url = "github:luckasRanarison/tree-sitter-hyprlang";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = {
     nixpkgs,
     home-manager,
-    tree-sitter-hypr,
+    tree-sitter-hyprlang,
     ...
   }: {
     homeConfigurations."user@hostname" = let
@@ -57,7 +57,7 @@ Add the flake and use it as `vimPlugin` within e.g. your home manager configurat
             programs.neovim = {
               enable = true;
               plugins = with pkgs.vimPlugins; [
-                tree-sitter-hypr.packages.${pkgs.system}.default
+                tree-sitter-hyprlang.packages.${pkgs.system}.default
                 {
                   plugin = nvim-treesitter.withAllGrammars;
                   type = "lua";
@@ -79,10 +79,10 @@ Add the flake and use it as `vimPlugin` within e.g. your home manager configurat
 
 ### Filetype detection
 
-hyprs configuration does not have a specific filetype extension. Thus, we detect `.conf` with a path pattern. If your configuration does not get initialized as filetype `hypr` you can set it locally with `:set filetype=hypr` or add another pattern for type detection to your config. The following snippet resolves files with name `hyprland.conf` and sets `hypr` as filetype.
+hyprlang does not have a specific filetype extension. Thus, we detect `.conf` with a path pattern. If your configuration does not get initialized as filetype `hyprlang` you can set it locally with `:set filetype=hyprlang` or add another pattern for type detection to your config. The following snippet resolves files with name `hyprland.conf` and sets `hyprlang` as filetype.
 
 ```lua
 vim.filetype.add({
-  pattern = { [".*/hyprland%.conf"] = "hypr" },
+  pattern = { [".*/hyprland%.conf"] = "hyprlang" },
 })
 ```

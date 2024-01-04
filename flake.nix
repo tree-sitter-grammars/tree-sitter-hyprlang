@@ -15,10 +15,10 @@
     };
 
     src = ./.;
-    version = "v1.1.0";
+    version = "v2.0.0";
 
-    hypr-grammar = pkgs.tree-sitter.buildGrammar {
-      language = "hypr";
+    hyprlang-grammar = pkgs.tree-sitter.buildGrammar {
+      language = "hyprlang";
       inherit version src;
       generate = true;
     };
@@ -26,7 +26,7 @@
   in {
     packages = {
       default = pkgs.vimUtils.buildVimPlugin {
-        pname = "tree-sitter-hypr";
+        pname = "tree-sitter-hyprlang";
         inherit version src;
 
         # Since this package isn't with all the other treesitter grammars,
@@ -34,15 +34,15 @@
         preInstall = let
           tsInstall = ''
             vim.filetype.add({
-              pattern = { [\".*/hypr/.*%.conf\"] = \"hypr\" },
+              pattern = { [\".*/hypr/.*%.conf\"] = \"hyprlang\" },
             })
 
             vim.api.nvim_create_autocmd(\"FileType\", {
-              pattern = \"hypr\",
+              pattern = \"hyprlang\",
               callback = function(event) vim.bo[event.buf].commentstring = \"# %s\" end,
             })
 
-            vim.treesitter.language.require_language(\"hypr\", \"${hypr-grammar}/parser\")
+            vim.treesitter.language.require_language(\"hyprlang\", \"${hyprlang-grammar}/parser\")
           '';
         in ''
           echo "${tsInstall}" > ./plugin/init.lua

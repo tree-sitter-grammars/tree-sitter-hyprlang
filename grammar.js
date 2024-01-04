@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: "hypr",
+  name: "hyprlang",
 
   extras: ($) => [/[ \t]/, $.comment],
 
