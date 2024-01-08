@@ -4,10 +4,10 @@ Basics
 
 # comment
 
-$variable = value
+$variable = value # inline comment
 
 section {
-  key =
+  key = not a ##comment
 }
 
 section:device {
@@ -20,11 +20,13 @@ section:device {
   (comment)
   (declaration
     (variable)
-    (string))
+    (string)
+    (comment))
   (section
     (name)
     (assignment
-      (name)))
+      (name)
+      (string)))
   (section
     (name)
     device: (name)

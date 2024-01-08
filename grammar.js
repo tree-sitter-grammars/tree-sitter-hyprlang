@@ -91,7 +91,7 @@ module.exports = grammar({
 
     keys: ($) => choice(seq($.mod, $.mod), seq($.variable, $.mod)),
 
-    string: () => token(prec(-1, /[^\n,]+/)),
+    string: () => token(prec(-1, /[^\n,#]+|.*##.*/)),
 
     params: ($) => prec(-1, seq($._value, repeat(seq(",", $._value)))),
 
