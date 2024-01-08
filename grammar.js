@@ -93,7 +93,8 @@ module.exports = grammar({
 
     string: () => token(prec(-1, /[^\n,#]+|.*##.*/)),
 
-    params: ($) => prec(-1, seq($._value, repeat(seq(",", $._value)))),
+    params: ($) =>
+      prec(-1, seq($._value, repeat(seq(",", optional($._value))))),
 
     name: () => /[a-zA-Z][a-zA-Z0-9_\.\-]*/,
 

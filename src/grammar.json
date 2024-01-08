@@ -568,8 +568,16 @@
                   "value": ","
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_value"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_value"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 }
               ]
             }
