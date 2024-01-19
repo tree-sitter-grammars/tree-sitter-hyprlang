@@ -18,7 +18,7 @@
 )
 
 (section
-  device: (name) @type
+  device: (device_name) @type
 )
 
 (variable) @variable

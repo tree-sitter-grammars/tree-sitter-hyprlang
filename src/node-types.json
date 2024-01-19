@@ -334,7 +334,7 @@
         "required": false,
         "types": [
           {
-            "type": "name",
+            "type": "device_name",
             "named": true
           }
         ]
@@ -493,6 +493,10 @@
   {
     "type": "deg",
     "named": false
+  },
+  {
+    "type": "device_name",
+    "named": true
   },
   {
     "type": "exec",

@@ -29,7 +29,7 @@ section:device {
       (string)))
   (section
     (name)
-    device: (name)
+    device: (device_name)
     (assignment
       (name))))
 

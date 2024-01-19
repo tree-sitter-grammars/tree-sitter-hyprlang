@@ -29,7 +29,7 @@ module.exports = grammar({
 
     section: ($) =>
       seq(
-        choice($.name, seq($.name, ":", field("device", $.name))),
+        choice($.name, seq($.name, ":", field("device", $.device_name))),
         "{",
         $._linebreak,
         repeat(choice($.assignment, $.keyword, $.section, $._linebreak)),
@@ -96,7 +96,9 @@ module.exports = grammar({
     params: ($) =>
       prec(-1, seq($._value, repeat(seq(",", optional($._value))))),
 
-    name: () => /[\w\d][\w\d\/\.\-:]*/,
+    name: () => /[\w][\w\d\.\-]*/,
+
+    device_name: () => /[\w\d][\w\d\/\.\-:]*/,
 
     variable: () => seq("$", /\w[\w\d]*/),
 

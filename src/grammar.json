@@ -135,7 +135,7 @@
                   "name": "device",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "name"
+                    "name": "device_name"
                   }
                 }
               ]
@@ -586,6 +586,10 @@
       }
     },
     "name": {
+      "type": "PATTERN",
+      "value": "[\\w][\\w\\d\\.\\-]*"
+    },
+    "device_name": {
       "type": "PATTERN",
       "value": "[\\w\\d][\\w\\d\\/\\.\\-:]*"
     },
