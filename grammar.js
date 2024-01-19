@@ -96,7 +96,7 @@ module.exports = grammar({
     params: ($) =>
       prec(-1, seq($._value, repeat(seq(",", optional($._value))))),
 
-    name: () => /[\w\d][\w\d\/\.\-]*/,
+    name: () => /[\w\d][\w\d\/\.\-:]*/,
 
     variable: () => seq("$", /\w[\w\d]*/),
 

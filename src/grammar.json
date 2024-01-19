@@ -587,7 +587,7 @@
     },
     "name": {
       "type": "PATTERN",
-      "value": "[\\w\\d][\\w\\d\\/\\.\\-]*"
+      "value": "[\\w\\d][\\w\\d\\/\\.\\-:]*"
     },
     "variable": {
       "type": "SEQ",
