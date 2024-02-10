@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-hyprlang",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "hyprlang grammar for the tree-sitter parsing library",
   "author": "LIOKA Ranarison Fiderana",
   "repository": "https://github.com/luckasRanarison/tree-sitter-hyprlang",
