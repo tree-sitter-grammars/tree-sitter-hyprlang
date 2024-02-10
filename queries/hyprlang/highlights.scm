@@ -1,57 +1,48 @@
-(comment) @comment
+(comment) @comment @spell
 
-(source "source" @keyword)
-
-(exec "exec" @keyword)
-(exec "exec-once" @keyword)
+[
+  "source"
+  "exec"
+  "exec-once"
+] @keyword
 
 (keyword
-  (name) @keyword
-)
+  (name) @keyword)
 
 (assignment
-  (name) @property
-)
+  (name) @property)
 
 (section
-  (name) @namespace
-)
+  (name) @module)
 
 (section
-  device: (device_name) @type
-)
+  device: (device_name) @type)
 
 (variable) @variable
-(variable "$" @punctuation.special)
 
-(number) @number
+"$" @punctuation.special
 
 (boolean) @boolean
 
 (mod) @constant
 
-(vec2
-  (number) @number
-  (number) @number
-)
-
-[ 
-  "rgb" 
+[
+  "rgb"
   "rgba"
-] @function
+] @function.builtin
 
-(color
-  (legacy_hex) @number
-)
+[
+  (number)
+  (legacy_hex)
+  (angle)
+  (hex)
+] @number
 
-(angle) @number
-(angle "deg" @type)
+"deg" @type
 
-(hex) @number
+"," @punctuation.delimiter
 
-[ "," ] @punctuation
-
-[ 
+[
   "("
   ")"
   "{"
