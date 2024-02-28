@@ -8,6 +8,6 @@ You can install the hyprlang parser in neovim using [nvim-treesitter](https://gi
 
 ```lua
 vim.filetype.add({
-  pattern = { [".*/hyprland%.conf"] = "hyprlang" },
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
 ```
