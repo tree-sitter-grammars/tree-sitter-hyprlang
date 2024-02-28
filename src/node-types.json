@@ -264,6 +264,21 @@
     "fields": {}
   },
   {
+    "type": "number_tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "params",
     "named": true,
     "fields": {},
@@ -320,6 +335,10 @@
       "types": [
         {
           "type": "hex",
+          "named": true
+        },
+        {
+          "type": "number_tuple",
           "named": true
         }
       ]

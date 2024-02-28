@@ -43,6 +43,7 @@ vec2 = 1 2
 string = hyprland
 color_hex = 0xffffff
 color_rgb = rgb(000fff)
+color_rgb2 = rgb(122, 176, 91, 0.1)
 gradient = rgb(000fff) 0xfff000 45deg
 mod = SUPER
 variable = $variable
@@ -75,6 +76,15 @@ keyword = str, 1, 4, true
     (color
       (rgb
         (hex))))
+  (assignment
+    (name)
+      (color
+        (rgb
+          (number_tuple
+            (number)
+            (number)
+            (number)
+            (number)))))
   (assignment
     (name)
     (gradient

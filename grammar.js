@@ -64,9 +64,12 @@ module.exports = grammar({
 
     legacy_hex: ($) => seq("0x", $.hex),
 
-    rgb: ($) => seq(choice("rgb", "rgba"), "(", $.hex, ")"),
+    rgb: ($) =>
+      seq(choice("rgb", "rgba"), "(", choice($.hex, $.number_tuple), ")"),
 
     gradient: ($) => seq($.color, repeat($.color), optional($.angle)),
+
+    number_tuple: ($) => seq($.number, repeat(seq(",", $.number))),
 
     hex: () => /[0-9a-fA-F]{6,8}/,
 

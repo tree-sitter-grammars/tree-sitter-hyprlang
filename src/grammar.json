@@ -395,8 +395,17 @@
           "value": "("
         },
         {
-          "type": "SYMBOL",
-          "name": "hex"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "hex"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "number_tuple"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -429,6 +438,31 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "number_tuple": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              }
+            ]
+          }
         }
       ]
     },
