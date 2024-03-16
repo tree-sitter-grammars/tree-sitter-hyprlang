@@ -27,7 +27,7 @@
         "conf"
       ],
       "highlights": [
-        "queries/highlights.scm"
+        "queries/hyprlang/highlights.scm"
       ],
       "scope": "source.conf"
     }
