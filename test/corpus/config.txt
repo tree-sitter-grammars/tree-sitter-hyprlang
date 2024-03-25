@@ -20,7 +20,7 @@ section:device {
   (comment)
   (declaration
     (variable)
-    (string)
+    (string_literal)
     (comment))
   (section
     (name)

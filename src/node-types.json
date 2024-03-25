@@ -128,22 +128,6 @@
       "required": true,
       "types": [
         {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "color",
-          "named": true
-        },
-        {
-          "type": "gradient",
-          "named": true
-        },
-        {
-          "type": "keys",
-          "named": true
-        },
-        {
           "type": "mod",
           "named": true
         },
@@ -152,15 +136,11 @@
           "named": true
         },
         {
-          "type": "string",
+          "type": "string_literal",
           "named": true
         },
         {
           "type": "variable",
-          "named": true
-        },
-        {
-          "type": "vec2",
           "named": true
         }
       ]
@@ -563,6 +543,10 @@
   },
   {
     "type": "string",
+    "named": true
+  },
+  {
+    "type": "string_literal",
     "named": true
   },
   {

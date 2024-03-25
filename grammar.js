@@ -21,7 +21,13 @@ module.exports = grammar({
         )
       ),
 
-    declaration: ($) => seq($.variable, "=", $._value, $._linebreak),
+    declaration: ($) =>
+      seq(
+        $.variable,
+        "=",
+        choice($.mod, $.number, $.string_literal),
+        $._linebreak
+      ),
 
     assignment: ($) => seq($.name, "=", optional($._value), $._linebreak),
 
@@ -95,6 +101,8 @@ module.exports = grammar({
     keys: ($) => choice(seq($.mod, $.mod), seq($.variable, $.mod)),
 
     string: () => token(prec(-1, /[^\n,#]+|.*##.*/)),
+
+    string_literal: () => token(prec(-1, /[^\n#]+|.*##.*/)),
 
     params: ($) =>
       prec(-1, seq($._value, repeat(seq(",", optional($._value))))),
