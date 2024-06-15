@@ -269,10 +269,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "color"
-        },
-        {
-          "type": "SYMBOL",
           "name": "gradient"
         },
         {
@@ -290,6 +286,14 @@
         {
           "type": "SYMBOL",
           "name": "variable"
+        },
+        {
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SYMBOL",
+            "name": "color"
+          }
         },
         {
           "type": "PREC",
@@ -770,10 +774,6 @@
   ],
   "conflicts": [
     [
-      "_value",
-      "gradient"
-    ],
-    [
       "number",
       "legacy_hex"
     ]
@@ -783,3 +783,4 @@
   "inline": [],
   "supertypes": []
 }
+

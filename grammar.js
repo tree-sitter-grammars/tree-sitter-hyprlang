@@ -3,10 +3,7 @@ module.exports = grammar({
 
   extras: ($) => [/[ \t]/, $.comment],
 
-  conflicts: ($) => [
-    [$._value, $.gradient],
-    [$.number, $.legacy_hex],
-  ],
+  conflicts: ($) => [[$.number, $.legacy_hex]],
 
   word: ($) => $.string,
 
@@ -56,12 +53,12 @@ module.exports = grammar({
         $.number,
         $.vec2,
         $.display,
-        $.color,
         $.gradient,
         $.mod,
         $.keys,
         $.string,
         $.variable,
+        prec(1, $.color),
         prec(1, $.position)
       ),
 
