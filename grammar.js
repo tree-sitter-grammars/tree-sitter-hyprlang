@@ -3,7 +3,10 @@ module.exports = grammar({
 
   extras: ($) => [/[ \t]/, $.comment],
 
-  conflicts: ($) => [[$._value, $.gradient]],
+  conflicts: ($) => [
+    [$._value, $.gradient],
+    [$.number, $.legacy_hex],
+  ],
 
   word: ($) => $.string,
 
@@ -52,23 +55,26 @@ module.exports = grammar({
         $.boolean,
         $.number,
         $.vec2,
+        $.display,
         $.color,
         $.gradient,
         $.mod,
         $.keys,
         $.string,
-        $.variable
+        $.variable,
+        prec(1, $.position)
       ),
 
     boolean: () => choice("true", "false", "on", "off", "yes", "no"),
 
-    number: () => seq(optional(choice("+", "-")), /[0-9][0-9\.]*/),
+    number: ($) =>
+      choice($._zero, seq(optional(choice("+", "-")), /[0-9][0-9\.]*/)),
 
     vec2: ($) => seq($.number, $.number),
 
     color: ($) => choice($.legacy_hex, $.rgb),
 
-    legacy_hex: ($) => seq("0x", $.hex),
+    legacy_hex: ($) => seq($._zero, "x", $.hex),
 
     rgb: ($) =>
       seq(choice("rgb", "rgba"), "(", choice($.hex, $.number_tuple), ")"),
@@ -76,6 +82,10 @@ module.exports = grammar({
     gradient: ($) => seq($.color, repeat($.color), optional($.angle)),
 
     number_tuple: ($) => seq($.number, repeat(seq(",", $.number))),
+
+    display: ($) => seq($.position, optional(seq("@", $.number))),
+
+    position: ($) => seq($.number, "x", $.number),
 
     hex: () => /[0-9a-fA-F]{6,8}/,
 
@@ -112,6 +122,8 @@ module.exports = grammar({
     device_name: () => /[\w\d][\w\d\/\.\-:]*/,
 
     variable: () => seq("$", /\w[\w\d]*/),
+
+    _zero: () => "0",
 
     _linebreak: () => "\n",
 

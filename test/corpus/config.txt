@@ -48,6 +48,7 @@ gradient = rgb(000fff) 0xfff000 45deg
 mod = SUPER
 variable = $variable
 keyword = str, 1, 4, true
+monitor=DP-1,1378x1024@60,0x0,1
 
 ---
 
@@ -107,5 +108,17 @@ keyword = str, 1, 4, true
       (string)
       (number)
       (number)
-      (boolean))))
-
+      (boolean)))
+  (keyword
+    (name)
+    (params
+      (string)
+      (display
+        (position
+          (number)
+          (number))
+        (number))
+      (position
+        (number)
+        (number))
+      (number))))

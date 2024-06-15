@@ -21,6 +21,10 @@
           "named": true
         },
         {
+          "type": "display",
+          "named": true
+        },
+        {
           "type": "gradient",
           "named": true
         },
@@ -38,6 +42,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "position",
           "named": true
         },
         {
@@ -141,6 +149,25 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "display",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "position",
           "named": true
         }
       ]
@@ -275,6 +302,10 @@
           "named": true
         },
         {
+          "type": "display",
+          "named": true
+        },
+        {
           "type": "gradient",
           "named": true
         },
@@ -291,6 +322,10 @@
           "named": true
         },
         {
+          "type": "position",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -300,6 +335,21 @@
         },
         {
           "type": "vec2",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "position",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
           "named": true
         }
       ]
@@ -426,15 +476,15 @@
     "named": false
   },
   {
-    "type": "0x",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
   {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {
@@ -551,6 +601,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "x",
     "named": false
   },
   {
