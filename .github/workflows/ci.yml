@@ -2,23 +2,74 @@ name: CI
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - master
+    paths:
+      - grammar.js
+      - src/**
+      - test/**
+      - bindings/**
+      - binding.gyp
   pull_request:
-    branches: ["master"]
+    paths:
+      - grammar.js
+      - src/**
+      - test/**
+      - bindings/**
+      - binding.gyp
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    name: Test parser
+    runs-on: ${{matrix.os}}
+    if: >-
+      !github.event.repository.is_template &&
+      github.event.head_commit.message != 'Initial commit'
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [18.x]
+        os: [ubuntu-latest, windows-latest, macos-14]
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
+      - name: Check for scanner changes
+        id: scanner-check
+        shell: sh
+        run: |-
+          {
+            test -f src/scanner.c && ! git diff --quiet HEAD^ -- "$_" &&
+            printf 'changed=true\n' || printf 'changed=false\n'
+          } >> "$GITHUB_OUTPUT"
+      - name: Fuzz scanner
+        uses: tree-sitter/fuzz-action@v4
+        if: steps.scanner-check.outputs.changed == 'true'
+      - name: Run tests
+        uses: tree-sitter/parser-test-action@v2
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm install
-      - run: npm run build
-      - run: npm test
+          test-rust: ${{runner.os == 'Linux'}}
+  fuzz:
+    name: Fuzz scanner
+    runs-on: ubuntu-latest
+    if: >-
+      !github.event.repository.is_template &&
+      github.event.head_commit.message != 'Initial commit'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check for scanner changes
+        id: scanner-check
+        shell: sh
+        run: |-
+          {
+            test -f src/scanner.c && ! git diff --quiet HEAD^ -- "$_" &&
+            printf 'changed=true\n' || printf 'changed=false\n'
+          } >> "$GITHUB_OUTPUT"
+      - name: Run fuzzer
+        uses: tree-sitter/fuzz-action@v4
+        if: steps.scanner-check.outputs.changed == 'true'
