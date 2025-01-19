@@ -2,55 +2,49 @@
   "name": "tree-sitter-hyprlang",
   "version": "3.0.0",
   "description": "hyprlang grammar for the tree-sitter parsing library",
-  "author": "LIOKA Ranarison Fiderana",
-  "repository": "https://github.com/luckasRanarison/tree-sitter-hyprlang",
+  "repository": "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang",
   "license": "MIT",
+  "author": {
+    "name": "LIOKA Ranarison Fiderana"
+  },
+  "main": "bindings/node",
+  "types": "bindings/node",
   "keywords": [
-    "parsing",
     "incremental",
-    "hyprland"
+    "parsing",
+    "tree-sitter",
+    "hyprlang"
   ],
   "files": [
     "grammar.js",
+    "tree-sitter.json",
     "binding.gyp",
     "prebuilds/**",
     "bindings/node/*",
     "queries/*",
-    "src/**"
+    "src/**",
+    "*.wasm"
   ],
-  "main": "bindings/node",
-  "types": "bindings/node",
   "dependencies": {
-    "node-addon-api": "^7.1.0",
-    "node-gyp-build": "^4.8.0"
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.24.7"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.0"
+    "tree-sitter": "^0.21.1"
   },
   "peerDependenciesMeta": {
-    "tree_sitter": {
+    "tree-sitter": {
       "optional": true
     }
   },
-  "devDependencies": {
-    "tree-sitter-cli": "^0.20.8",
-    "prebuildify": "^6.0.0"
-  },
   "scripts": {
-    "build": "tree-sitter generate",
-    "test": "tree-sitter test",
     "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip"
-  },
-  "tree-sitter": [
-    {
-      "file-types": [
-        "conf"
-      ],
-      "highlights": [
-        "queries/hyprlang/highlights.scm"
-      ],
-      "scope": "source.conf"
-    }
-  ]
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  }
 }

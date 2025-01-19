@@ -95,6 +95,7 @@
   {
     "type": "configuration",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -448,6 +449,10 @@
     }
   },
   {
+    "type": "\n",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },
@@ -473,6 +478,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "0",
     "named": false
   },
   {

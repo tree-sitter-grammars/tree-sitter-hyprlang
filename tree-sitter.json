@@ -1,0 +1,38 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "hyprlang",
+      "camelcase": "Hyprlang",
+      "scope": "source.conf",
+      "path": ".",
+      "file-types": [
+        "conf"
+      ],
+      "highlights": [
+        "queries/hyprlang/highlights.scm"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "3.0.0",
+    "license": "MIT",
+    "description": "hyprlang grammar for the tree-sitter parsing library",
+    "authors": [
+      {
+        "name": "LIOKA Ranarison Fiderana"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

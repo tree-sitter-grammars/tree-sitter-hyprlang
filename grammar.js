@@ -1,3 +1,12 @@
+/**
+ * @file Hyprlang grammar for tree-sitter
+ * @author LIOKA Ranarison Fiderana
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 module.exports = grammar({
   name: "hyprlang",
 
