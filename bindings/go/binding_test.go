@@ -3,8 +3,8 @@ package tree_sitter_hyprlang_test
 import (
 	"testing"
 
-	tree_sitter "github.com/smacker/go-tree-sitter"
-	"github.com/tree-sitter/tree-sitter-hyprlang"
+	tree_sitter "github.com/tree-sitter/go-tree-sitter"
+	tree_sitter_hyprlang "github.com/tree-sitter-grammars/tree-sitter-hyprlang/bindings/go"
 )
 
 func TestCanLoadGrammar(t *testing.T) {
