@@ -2,8 +2,11 @@
 
 [
   "source"
-  "exec"
   "exec-once"
+  "execr-once"
+  "exec"
+  "execr"
+  "exec-shutdown"
 ] @keyword
 
 (keyword

@@ -54,7 +54,13 @@ module.exports = grammar({
 
     source: ($) => seq("source", "=", $.string, $._linebreak),
 
-    exec: ($) => seq(choice("exec", "exec-once"), "=", $.string, $._linebreak),
+    exec: ($) =>
+      seq(
+        choice("exec-once", "execr-once", "exec", "execr", "exec-shutdown"),
+        "=",
+        $.string,
+        $._linebreak,
+      ),
 
     _value: ($) =>
       choice(

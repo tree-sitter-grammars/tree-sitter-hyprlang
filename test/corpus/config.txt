@@ -122,3 +122,27 @@ monitor=DP-1,1378x1024@60,0x0,1
         (number)
         (number))
       (number))))
+
+=================================================
+Keyword `exec`
+=================================================
+
+exec-once = command
+execr-once = command
+exec = command
+execr = command
+exec-shutdown = command
+
+-------------------------------------------------
+
+(configuration
+  (exec
+    command: (string))
+  (exec
+    command: (string))
+  (exec
+    command: (string))
+  (exec
+    command: (string))
+  (exec
+    command: (string)))
