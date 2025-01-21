@@ -227,11 +227,23 @@
           "members": [
             {
               "type": "STRING",
+              "value": "exec-once"
+            },
+            {
+              "type": "STRING",
+              "value": "execr-once"
+            },
+            {
+              "type": "STRING",
               "value": "exec"
             },
             {
               "type": "STRING",
-              "value": "exec-once"
+              "value": "execr"
+            },
+            {
+              "type": "STRING",
+              "value": "exec-shutdown"
             }
           ]
         },
@@ -240,8 +252,12 @@
           "value": "="
         },
         {
-          "type": "SYMBOL",
-          "name": "string"
+          "type": "FIELD",
+          "name": "command",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
         },
         {
           "type": "SYMBOL",

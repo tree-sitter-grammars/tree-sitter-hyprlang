@@ -177,16 +177,17 @@
   {
     "type": "exec",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
+    "fields": {
+      "command": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -562,6 +563,18 @@
   },
   {
     "type": "exec-once",
+    "named": false
+  },
+  {
+    "type": "exec-shutdown",
+    "named": false
+  },
+  {
+    "type": "execr",
+    "named": false
+  },
+  {
+    "type": "execr-once",
     "named": false
   },
   {
