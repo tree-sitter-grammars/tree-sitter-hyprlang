@@ -177,17 +177,16 @@
   {
     "type": "exec",
     "named": true,
-    "fields": {
-      "command": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "string",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -499,6 +498,10 @@
   },
   {
     "type": "ALT",
+    "named": false
+  },
+  {
+    "type": "ALT_L",
     "named": false
   },
   {

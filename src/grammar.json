@@ -252,12 +252,8 @@
           "value": "="
         },
         {
-          "type": "FIELD",
-          "name": "command",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string"
-          }
+          "type": "SYMBOL",
+          "name": "string"
         },
         {
           "type": "SYMBOL",
@@ -614,6 +610,10 @@
         },
         {
           "type": "STRING",
+          "value": "ALT_L"
+        },
+        {
+          "type": "STRING",
           "value": "MOD2"
         },
         {
@@ -798,5 +798,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

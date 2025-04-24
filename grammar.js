@@ -110,6 +110,7 @@ module.exports = grammar({
         "CTRL",
         "CONTROL",
         "ALT",
+        "ALT_L",
         "MOD2",
         "MOD3",
         "SUPER",
