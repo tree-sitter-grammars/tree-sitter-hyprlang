@@ -1,6 +1,7 @@
 from unittest import TestCase
 
-import tree_sitter, tree_sitter_hyprlang
+import tree_sitter
+import tree_sitter_hyprlang
 
 
 class TestLanguage(TestCase):
