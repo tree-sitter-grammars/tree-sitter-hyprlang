@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-hyprlang
 HOMEPAGE_URL := https://github.com/tree-sitter-grammars/tree-sitter-hyprlang
-VERSION := 3.0.0
+VERSION := 3.1.0
 
 # repository
 SRC_DIR := src

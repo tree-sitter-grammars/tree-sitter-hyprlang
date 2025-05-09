@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-hyprlang
-        VERSION "3.0.0"
+        VERSION "3.1.0"
         DESCRIPTION "hyprlang grammar for the tree-sitter parsing library"
         HOMEPAGE_URL "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"
         LANGUAGES C)
