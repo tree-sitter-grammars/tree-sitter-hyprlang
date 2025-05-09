@@ -11,9 +11,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 53
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 2
+#define FIELD_COUNT 1
 #define MAX_ALIAS_SEQUENCE_LENGTH 8
-#define PRODUCTION_ID_COUNT 3
+#define PRODUCTION_ID_COUNT 2
 
 enum ts_symbol_identifiers {
   sym_string = 1,
@@ -615,25 +615,20 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum ts_field_identifiers {
-  field_command = 1,
-  field_device = 2,
+  field_device = 1,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
-  [field_command] = "command",
   [field_device] = "device",
 };
 
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [1] = {.index = 0, .length = 1},
-  [2] = {.index = 1, .length = 1},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
   [0] =
-    {field_command, 2},
-  [1] =
     {field_device, 2},
 };
 
@@ -4447,24 +4442,24 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [82] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_gradient_repeat1, 2, 0, 0),
   [84] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_gradient_repeat1, 2, 0, 0),
   [86] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_gradient_repeat1, 2, 0, 0), SHIFT_REPEAT(26),
-  [89] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_section, 8, 0, 2),
-  [91] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_section, 8, 0, 2),
+  [89] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_section, 8, 0, 1),
+  [91] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_section, 8, 0, 1),
   [93] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__linebreak, 1, 0, 0),
   [95] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__linebreak, 1, 0, 0),
   [97] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_keyword, 4, 0, 0),
   [99] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_keyword, 4, 0, 0),
   [101] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source, 4, 0, 0),
   [103] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_source, 4, 0, 0),
-  [105] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_exec, 4, 0, 1),
-  [107] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_exec, 4, 0, 1),
+  [105] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_exec, 4, 0, 0),
+  [107] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_exec, 4, 0, 0),
   [109] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_assignment, 4, 0, 0),
   [111] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_assignment, 4, 0, 0),
   [113] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_declaration, 4, 0, 0),
   [115] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_declaration, 4, 0, 0),
   [117] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_configuration_repeat1, 1, 0, 0),
   [119] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_configuration_repeat1, 1, 0, 0),
-  [121] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_section, 7, 0, 2),
-  [123] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_section, 7, 0, 2),
+  [121] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_section, 7, 0, 1),
+  [123] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_section, 7, 0, 1),
   [125] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_section, 5, 0, 0),
   [127] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_section, 5, 0, 0),
   [129] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_assignment, 3, 0, 0),
