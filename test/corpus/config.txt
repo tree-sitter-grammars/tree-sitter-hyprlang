@@ -137,12 +137,12 @@ exec-shutdown = command
 
 (configuration
   (exec
-    command: (string))
+    (string))
   (exec
-    command: (string))
+    (string))
   (exec
-    command: (string))
+    (string))
   (exec
-    command: (string))
+    (string))
   (exec
-    command: (string)))
+    (string)))
