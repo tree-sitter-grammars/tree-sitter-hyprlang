@@ -4,14 +4,13 @@
     {
       "name": "hyprlang",
       "camelcase": "Hyprlang",
-      "scope": "source.conf",
+      "scope": "source.hypr",
       "path": ".",
       "file-types": [
         "conf"
       ],
-      "highlights": [
-        "queries/hyprlang/highlights.scm"
-      ]
+      "highlights": "queries/hyprlang/highlights.scm",
+      "injections": "queries/hyprlang/injections.scm"
     }
   ],
   "metadata": {
