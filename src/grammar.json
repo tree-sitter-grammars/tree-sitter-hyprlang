@@ -610,6 +610,10 @@
         },
         {
           "type": "STRING",
+          "value": "ALT_L"
+        },
+        {
+          "type": "STRING",
           "value": "MOD2"
         },
         {
