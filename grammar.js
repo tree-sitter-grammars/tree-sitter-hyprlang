@@ -54,13 +54,27 @@ module.exports = grammar({
 
     source: ($) => seq("source", "=", $.string, $._linebreak),
 
-    exec: ($) =>
+    arguments: ($) => repeat1(choice($.number, alias($._window_rule_argument, $.string))),
+
+    window_rule: ($) => seq($.name, optional($.arguments)),
+
+    rules: ($) => seq("[", $.window_rule, repeat(seq(';', $.window_rule)), "]"),
+
+    exec: ($) => choice(
       seq(
-        choice("exec-once", "execr-once", "exec", "execr", "exec-shutdown"),
+        choice("exec-once", "exec"),
+        "=",
+        optional($.rules),
+        $.string,
+        $._linebreak,
+      ),
+      seq(
+        choice("execr-once", "execr", "exec-shutdown"),
         "=",
         $.string,
         $._linebreak,
       ),
+    ),
 
     _value: ($) =>
       choice(
@@ -138,8 +152,11 @@ module.exports = grammar({
 
     _zero: () => "0",
 
+    _window_rule_argument: () => /[^\]\s;,]+/,
+
     _linebreak: () => "\n",
 
     comment: () => seq("#", /.*/),
+
   },
 });

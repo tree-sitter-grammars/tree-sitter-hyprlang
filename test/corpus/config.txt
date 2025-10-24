@@ -79,13 +79,13 @@ monitor=DP-1,1378x1024@60,0x0,1
         (hex))))
   (assignment
     (name)
-      (color
-        (rgb
-          (number_tuple
-            (number)
-            (number)
-            (number)
-            (number)))))
+    (color
+      (rgb
+        (number_tuple
+          (number)
+          (number)
+          (number)
+          (number)))))
   (assignment
     (name)
     (gradient
@@ -133,6 +133,12 @@ exec = command
 execr = command
 exec-shutdown = command
 
+exec-once = [workspace 1 silent] command
+execr-once = [command]
+exec = [monitor 1; float; move 20% 30%] command
+execr = [command]
+exec-shutdown = [command]
+
 -------------------------------------------------
 
 (configuration
@@ -141,6 +147,34 @@ exec-shutdown = command
   (exec
     (string))
   (exec
+    (string))
+  (exec
+    (string))
+  (exec
+    (string))
+  (exec
+    (rules
+      (window_rule
+        (name)
+        (arguments
+          (number)
+          (string))))
+    (string))
+  (exec
+    (string))
+  (exec
+    (rules
+      (window_rule
+        (name)
+        (arguments
+          (number)))
+      (window_rule
+        (name))
+      (window_rule
+        (name)
+        (arguments
+          (string)
+          (string))))
     (string))
   (exec
     (string))

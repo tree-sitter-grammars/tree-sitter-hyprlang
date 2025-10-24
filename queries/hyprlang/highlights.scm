@@ -18,6 +18,9 @@
 (section
   (name) @module)
 
+(window_rule
+  (name) @function.call)
+
 (section
   device: (device_name) @type)
 
@@ -45,13 +48,18 @@
 
 "deg" @type
 
-"," @punctuation.delimiter
+[
+  ","
+  ";"
+] @punctuation.delimiter
 
 [
   "("
   ")"
   "{"
   "}"
+  "["
+  "]"
 ] @punctuation.bracket
 
 [

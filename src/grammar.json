@@ -219,45 +219,159 @@
         }
       ]
     },
-    "exec": {
+    "arguments": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_window_rule_argument"
+            },
+            "named": true,
+            "value": "string"
+          }
+        ]
+      }
+    },
+    "window_rule": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "exec-once"
+              "type": "SYMBOL",
+              "name": "arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "rules": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "window_rule"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ";"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "window_rule"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "exec": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "exec-once"
+                },
+                {
+                  "type": "STRING",
+                  "value": "exec"
+                }
+              ]
             },
             {
               "type": "STRING",
-              "value": "execr-once"
+              "value": "="
             },
             {
-              "type": "STRING",
-              "value": "exec"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "rules"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
-              "type": "STRING",
-              "value": "execr"
+              "type": "SYMBOL",
+              "name": "string"
             },
             {
-              "type": "STRING",
-              "value": "exec-shutdown"
+              "type": "SYMBOL",
+              "name": "_linebreak"
             }
           ]
         },
         {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_linebreak"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "execr-once"
+                },
+                {
+                  "type": "STRING",
+                  "value": "execr"
+                },
+                {
+                  "type": "STRING",
+                  "value": "exec-shutdown"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": "="
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_linebreak"
+            }
+          ]
         }
       ]
     },
@@ -760,6 +874,10 @@
     "_zero": {
       "type": "STRING",
       "value": "0"
+    },
+    "_window_rule_argument": {
+      "type": "PATTERN",
+      "value": "[^\\]\\s;,]+"
     },
     "_linebreak": {
       "type": "STRING",
