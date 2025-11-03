@@ -32,19 +32,19 @@ module.exports = grammar({
 
     declaration: ($) =>
       seq(
-        $.variable,
+        field("name", $.variable),
         "=",
-        choice($.mod, $.number, $.string_literal),
+        field("value", choice($.mod, $.number, $.string_literal)),
         $._linebreak
       ),
 
-    assignment: ($) => seq($.name, "=", optional($._value), $._linebreak),
+    assignment: ($) => seq(field("name", $.name), "=", field("value", optional($._value)), $._linebreak),
 
-    keyword: ($) => seq($.name, "=", $.params, $._linebreak),
+    keyword: ($) => seq(field("keyword", $.name), "=", field("value", $.params), $._linebreak),
 
     section: ($) =>
       seq(
-        choice($.name, seq($.name, ":", field("device", $.device_name))),
+        seq(field("name", $.name), optional(seq(":", field("device", $.device_name)))),
         "{",
         $._linebreak,
         repeat(choice($.assignment, $.keyword, $.section, $._linebreak)),

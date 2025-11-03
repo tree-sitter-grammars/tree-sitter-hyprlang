@@ -19,19 +19,19 @@ section:device {
 (configuration
   (comment)
   (declaration
-    (variable)
-    (string_literal)
+    name: (variable)
+    value: (string_literal)
     (comment))
   (section
-    (name)
+    name: (name)
     (assignment
-      (name)
-      (string)))
+      name: (name)
+      value: (string)))
   (section
-    (name)
+    name: (name)
     device: (device_name)
     (assignment
-      (name))))
+      name: (name))))
 
 =================================================
 Data types
