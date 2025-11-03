@@ -26,55 +26,72 @@ module.exports = grammar({
           $.assignment,
           $.keyword,
           $.section,
-          $._linebreak
-        )
+          $._linebreak,
+        ),
       ),
 
     declaration: ($) =>
       seq(
         field("name", $.variable),
         "=",
-        field("value", choice($.mod, $.number, $.string_literal)),
-        $._linebreak
+        field("value", choice($.mod, $.number, $.string_literal, $.color)),
+        $._linebreak,
       ),
 
-    assignment: ($) => seq(field("name", $.name), "=", field("value", optional($._value)), $._linebreak),
+    assignment: ($) =>
+      seq(
+        field("name", $.name),
+        "=",
+        field("value", optional($._value)),
+        $._linebreak,
+      ),
 
-    keyword: ($) => seq(field("keyword", $.name), "=", field("value", $.params), $._linebreak),
+    keyword: ($) =>
+      seq(
+        field("keyword", $.name),
+        "=",
+        field("value", $.params),
+        $._linebreak,
+      ),
 
     section: ($) =>
       seq(
-        seq(field("name", $.name), optional(seq(":", field("device", $.device_name)))),
+        seq(
+          field("name", $.name),
+          optional(seq(":", field("device", $.device_name))),
+        ),
         "{",
         $._linebreak,
         repeat(choice($.assignment, $.keyword, $.section, $._linebreak)),
         "}",
-        $._linebreak
+        $._linebreak,
       ),
 
     source: ($) => seq("source", "=", $.string, $._linebreak),
 
-    arguments: ($) => repeat1(choice($.number, alias($._window_rule_argument, $.string))),
+    arguments: ($) =>
+      repeat1(choice($.number, alias($._window_rule_argument, $.string))),
 
     window_rule: ($) => seq($.name, optional($.arguments)),
 
-    rules: ($) => seq("[", $.window_rule, repeat(seq(';', $.window_rule)), "]"),
+    rules: ($) => seq("[", $.window_rule, repeat(seq(";", $.window_rule)), "]"),
 
-    exec: ($) => choice(
-      seq(
-        choice("exec-once", "exec"),
-        "=",
-        optional($.rules),
-        $.string,
-        $._linebreak,
+    exec: ($) =>
+      choice(
+        seq(
+          choice("exec-once", "exec"),
+          "=",
+          optional($.rules),
+          $.string,
+          $._linebreak,
+        ),
+        seq(
+          choice("execr-once", "execr", "exec-shutdown"),
+          "=",
+          $.string,
+          $._linebreak,
+        ),
       ),
-      seq(
-        choice("execr-once", "execr", "exec-shutdown"),
-        "=",
-        $.string,
-        $._linebreak,
-      ),
-    ),
 
     _value: ($) =>
       choice(
@@ -88,7 +105,7 @@ module.exports = grammar({
         $.string,
         $.variable,
         prec(1, $.color),
-        prec(1, $.position)
+        prec(1, $.position),
       ),
 
     boolean: () => choice("true", "false", "on", "off", "yes", "no"),
@@ -132,7 +149,7 @@ module.exports = grammar({
         "LOGO",
         "MOD4",
         "MOD5",
-        "TAB"
+        "TAB",
       ),
 
     keys: ($) => choice(seq($.mod, $.mod), seq($.variable, $.mod)),
@@ -148,7 +165,7 @@ module.exports = grammar({
 
     device_name: () => /[\w\d][\w\d\/\.\-:]*/,
 
-    variable: () => seq("$", /\w[\w\d]*/),
+    variable: () => seq("$", field("name", /\w[\w\d]*/)),
 
     _zero: () => "0",
 
@@ -157,6 +174,5 @@ module.exports = grammar({
     _linebreak: () => "\n",
 
     comment: () => seq("#", /.*/),
-
   },
 });
