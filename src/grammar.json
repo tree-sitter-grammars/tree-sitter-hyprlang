@@ -71,6 +71,10 @@
               {
                 "type": "SYMBOL",
                 "name": "string_literal"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "color"
               }
             ]
           }
@@ -898,8 +902,12 @@
           "value": "$"
         },
         {
-          "type": "PATTERN",
-          "value": "\\w[\\w\\d]*"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\w[\\w\\d]*"
+          }
         }
       ]
     },
