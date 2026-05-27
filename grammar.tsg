@@ -1,0 +1,153 @@
+// Hyprlang grammar for tree-sitter (native DSL).
+// Translated from grammar.js.
+
+grammar {
+    language: "hyprlang",
+    extras: [regexp(r"[ \t]"), comment],
+    conflicts: [[number, legacy_hex]],
+    word: string,
+}
+
+rule configuration {
+    repeat(choice(
+        source, exec, declaration, assignment, keyword, section, _linebreak,
+    ))
+}
+
+rule declaration {
+    seq(
+        field(name, variable),
+        "=",
+        field(value, choice(mod, number, string_literal, color)),
+        _linebreak,
+    )
+}
+
+rule assignment {
+    seq(
+        field(name, name),
+        "=",
+        field(value, optional(_value)),
+        _linebreak,
+    )
+}
+
+rule keyword {
+    seq(
+        field(keyword, name),
+        "=",
+        field(value, params),
+        _linebreak,
+    )
+}
+
+rule section {
+    seq(
+        seq(
+            field(name, name),
+            optional(seq(":", field(device, device_name))),
+        ),
+        "{",
+        _linebreak,
+        repeat(choice(assignment, keyword, section, _linebreak)),
+        "}",
+        _linebreak,
+    )
+}
+
+rule source { seq("source", "=", string, _linebreak) }
+
+rule arguments {
+    repeat1(choice(number, alias(_window_rule_argument, string)))
+}
+
+rule window_rule { seq(name, optional(arguments)) }
+
+rule r#rules {
+    seq("[", window_rule, repeat(seq(";", window_rule)), "]")
+}
+
+rule exec {
+    choice(
+        seq(
+            choice("exec-once", "exec"),
+            "=",
+            optional(r#rules),
+            string,
+            _linebreak,
+        ),
+        seq(
+            choice("execr-once", "execr", "exec-shutdown"),
+            "=",
+            string,
+            _linebreak,
+        ),
+    )
+}
+
+rule _value {
+    choice(
+        boolean, number, vec2, display, gradient, mod, keys, string, variable,
+        prec(1, color),
+        prec(1, position),
+    )
+}
+
+rule boolean { choice("true", "false", "on", "off", "yes", "no") }
+
+rule number {
+    choice(_zero, seq(optional(choice("+", "-")), regexp(r"[0-9][0-9\.]*")))
+}
+
+rule vec2 { seq(number, number) }
+
+rule color { choice(legacy_hex, rgb) }
+
+rule legacy_hex { seq(_zero, "x", hex) }
+
+rule rgb {
+    seq(choice("rgb", "rgba"), "(", choice(hex, number_tuple), ")")
+}
+
+rule gradient { seq(color, repeat(color), optional(angle)) }
+
+rule number_tuple { seq(number, repeat(seq(",", number))) }
+
+rule display { seq(position, optional(seq("@", number))) }
+
+rule position { seq(number, "x", number) }
+
+rule hex { regexp(r"[0-9a-fA-F]{6,8}") }
+
+rule angle { seq(regexp(r"[0-9]{1,3}"), "deg") }
+
+rule mod {
+    choice(
+        "SHIFT", "CAPS", "CTRL", "CONTROL", "ALT", "ALT_L",
+        "MOD2", "MOD3", "SUPER", "WIN", "LOGO", "MOD4", "MOD5", "TAB",
+    )
+}
+
+rule keys { choice(seq(mod, mod), seq(variable, mod)) }
+
+rule string { token(prec(-1, regexp(r"[^\n,#]+|.*##.*"))) }
+
+rule string_literal { token(prec(-1, regexp(r"[^\n#]+|.*##.*"))) }
+
+rule params {
+    prec(-1, seq(_value, repeat(seq(",", optional(_value)))))
+}
+
+rule name { regexp(r"[\w][\w\d\.\-]*") }
+
+rule device_name { regexp(r"[\w\d][\w\d\/\.\-:]*") }
+
+rule variable { seq("$", field(name, regexp(r"\w[\w\d]*"))) }
+
+rule _zero { "0" }
+
+rule _window_rule_argument { regexp(r"[^\]\s;,]+") }
+
+rule _linebreak { "\n" }
+
+rule comment { seq("#", regexp(r".*")) }
